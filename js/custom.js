@@ -6,10 +6,10 @@ for(var i = 0; i < button.length; i++){
     button[i].addEventListener('click', function(){
         
         // capture button value as string
-        var currentBtn = this.innerText;
+        const currentBtn = this.innerText;
         if(currentBtn === "="){
-            var total = eval(numDisplay.innerText);
-            if(total === undefined || NaN){
+            const total = eval(numDisplay.innerText);
+            if(total === isNaN){
                 prevBtn = [];
                 return numDisplay.innerText = "Error";                
             }else{
@@ -21,15 +21,17 @@ for(var i = 0; i < button.length; i++){
             prevBtn = [];
             return numDisplay.innerText = "0";
         }else{
-        // value added to previous button values array
-        prevBtn.push(currentBtn);
-        console.log(prevBtn);
+            // value added to previous button values array
+            prevBtn.push(currentBtn);
+            console.log(prevBtn);
 
-        // display buttons that have been pressed
-        // also removes commas from array when displayed 
-        numDisplay.innerText = prevBtn.join("");
+            // display buttons that have been pressed
+            // also removes commas from array when displayed 
+            numDisplay.innerText = prevBtn.join("");
         }
     });
 };
-
+// ERROR: eval producess error when a symbole is asked to be evaluated
+// returns error 
+// need better understanding of what type of problem eval is having
 
