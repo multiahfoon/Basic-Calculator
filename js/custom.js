@@ -7,24 +7,28 @@ for(var i = 0; i < button.length; i++){
         
         // capture button value as string
         var currentBtn = this.innerText;
-
         if(currentBtn === "="){
-            let total = eval(numDisplay.innerText);
-            console.log(total);
-            prevBtn = [];
-            return numDisplay.innerText = total;
+            var total = eval(numDisplay.innerText);
+            if(total === undefined || NaN){
+                prevBtn = [];
+                return numDisplay.innerText = "Error";                
+            }else{
+                console.log(total);
+                prevBtn = [];
+                return numDisplay.innerText = total;
+            }
         }else if(currentBtn === "clear"){
             prevBtn = [];
             return numDisplay.innerText = "0";
-        }
-
-        // value added to previouse button values array
+        }else{
+        // value added to previous button values array
         prevBtn.push(currentBtn);
         console.log(prevBtn);
 
         // display buttons that have been pressed
-        // also removes commas from array output
+        // also removes commas from array when displayed 
         numDisplay.innerText = prevBtn.join("");
+        }
     });
 };
 
