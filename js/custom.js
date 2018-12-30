@@ -1,3 +1,5 @@
+
+
 const button = document.querySelectorAll('button');
 const numDisplay = document.querySelector('.numDisplay');
 
@@ -9,9 +11,11 @@ for(var i = 0; i < button.length; i++){
         const currentBtn = this.innerText;
         if(currentBtn === "="){
             const total = eval(numDisplay.innerText);
-            if(total === isNaN){
+            if(total === isNaN || undefined){
                 prevBtn = [];
                 return numDisplay.innerText = "Error";                
+            }else if(total == SyntaxError){
+                console.log("not working");
             }else{
                 console.log(total);
                 prevBtn = [];
